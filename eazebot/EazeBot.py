@@ -39,8 +39,8 @@ from telegram import (ReplyKeyboardMarkup,InlineKeyboardMarkup,InlineKeyboardBut
 from telegram.ext import (Updater, CommandHandler, MessageHandler, Filters, RegexHandler,
                           ConversationHandler,CallbackQueryHandler)
 from telegram.error import BadRequest
-
-if __name__ == '__main__' or os.path.isfile('tradeHandler.py'):
+exit()
+if os.path.isfile('tradeHandler.py'):
     from tradeHandler import tradeHandler
 else:
     from eazebot.tradeHandler import tradeHandler

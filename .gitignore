@@ -6,3 +6,4 @@ eazebot.egg-info/
 dist/
 build/
 eazebot/data.pickle.new
+/.vs/

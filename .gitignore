@@ -7,3 +7,6 @@ dist/
 build/
 eazebot/data.pickle.new
 /.vs/
+/eazebot/data.json
+/eazebot/APIs.json
+/eazebot/botConfig.json

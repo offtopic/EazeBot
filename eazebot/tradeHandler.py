@@ -409,7 +409,7 @@ class tradeHandler:
         elif ts['weeklycloseSL'] is not None:
             string += '\n*Stop-loss* set at weekly close < %s\n\n'%(self.price2Prec(ts['symbol'],ts['weeklycloseSL']))
         else:
-            string += '\n*No stop-loss set.*\n\n'
+            string += '\n`No stop-loss set.`\n\n'
         sumBuys = sum([val[0] for val in filledBuys])
         sumSells = sum([val[0] for val in filledSells])
         if ts['initCoins']>0:

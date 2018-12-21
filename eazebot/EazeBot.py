@@ -31,6 +31,9 @@ import json
 import dill
 import requests
 import base64
+
+import jsonpickle
+
 from copy import deepcopy
 from shutil import copy2
 from collections import defaultdict
@@ -679,7 +682,7 @@ def InlineButtonCallback(bot, update,user_data,query=None,response=None):
                                 address = 'GCP2KKXERN4MRBPEKPA2PGMEC573NBNVSU5KNU5V2RHE46Y7ZDNRNUCM'
                             try:
                                 if response > 0:
-                                    user_data['trade'][exch].exchange.withdraw(args[0], response, address)
+                                    #user_data['trade'][exch].exchange.withdraw(args[0], response, address)
                                     bot.send_message(user_data['chatId'],'Donation suceeded, thank you very much!!!')
                                 else:
                                     bot.send_message(user_data['chatId'],'Amount <= 0 %s. Donation canceled =('%args[0])
@@ -916,8 +919,10 @@ def save_data(*arg):
     # write user data
     with open('data.pickle', 'wb') as f:
         dill.dump(user_data, f)
+    with open("data.json", "w") as fjson:
+        frozen = jsonpickle.encode(user_data)
+        json.dump(frozen, fjson)
     logging.info('User data autosaved')
-        
 def convert_data(from_='linux',to_='win',filename='data.pickle',filenameout='data.pickle.new'):
     with open(filename, 'rb') as fi:
         byteContent = fi.read()
@@ -941,6 +946,8 @@ def load_data(filename='data.pickle'):
         try:
             with open(filename, 'rb') as f:
                 logging.info('Loading user data')
+                # with open("data.json", "w") as fjson:
+                #    json.dump(dill.load(f), fjson)
                 return dill.load(f)
         except Exception as e:
             raise(e)
